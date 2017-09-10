@@ -15,6 +15,7 @@
         <link rel="manifest" href="/manifest.json">
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="theme-color" content="#ffffff">
+        <link rel="stylesheet" href="main.css">
     </head>
     <body>
         <noscript id="noscript">
@@ -27,7 +28,30 @@
 
         <div id="unsupported"></div>
 
-        <div id="app"></div>
-        <!-- built files will be auto injected -->
+        <div id="app" class="fullscreenx">
+            <div id="header">
+                Header
+            </div>
+            <div id="nav">
+                <ul>
+                    <li>Nav1</li>
+                    <li>Nav2</li>
+                    <li>Nav3</li>
+                    <li>Nav4</li>
+                    <li>Nav5</li>
+                    <li>Nav6</li>
+                    <li>Nav7</li>
+                    <li>Nav8</li>
+                    <li>Nav9</li>
+                </ul>
+            </div>
+            <div id="body">
+                Body
+                <router-view></router-view>
+            </div>
+            <div id="footer">
+                Footer
+            </div>
+        </div>
     </body>
 </html>

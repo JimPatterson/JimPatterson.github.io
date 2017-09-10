@@ -1,0 +1,35 @@
+@supports (grid-area: auto) {
+    #app {
+        display: grid;
+        grid-gap: 1em;
+        grid-template:
+            "hdr hdr" minmax(2em, auto)
+            "nav bdy" 1fr
+            "nav ftr" minmax(2em, auto)
+            / minmax(5em, 1fr) 7fr
+            ;
+    }
+
+    #app .fullscreen {
+    }
+}
+
+#header {
+    grid-area: hdr;
+    background-color: aquamarine;
+}
+
+#nav {
+    grid-area: nav;
+    background-color: wheat;
+}
+
+#body {
+    grid-area: bdy;
+    background-color: powderblue;
+}
+
+#footer {
+    grid-area: ftr;
+    background-color: yellow;
+}
