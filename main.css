@@ -1,4 +1,27 @@
-@supports (grid-area: auto) {
+/*
+ * Legacy support - will be overridden on modern browsers.
+ * If you add things here, they must be overridden
+ * below.
+ */
+
+#app #header, #app #nav, #app #body, #app #footer {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#app #header, #app #footer {
+    width: 100%;
+}
+
+#app #nav {
+    width: 20%;
+}
+
+#app #body {
+    width: auto;
+}
+
+@supports (grid-areaz123: auto) {
     #app {
         display: grid;
         grid-gap: 1em;
