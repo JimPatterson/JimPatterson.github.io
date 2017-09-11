@@ -18,7 +18,25 @@
 }
 
 #app #body {
-    width: auto;
+    width: 80%;
+}
+
+@support (grid-area: auto) {
+    #app #header, #app #nav, #app #body, #app #footer {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #app #header, #app #footer {
+        width: auto;
+    }
+
+    #app #nav {
+        width: auto;
+    }
+
+    #app #body {
+    }
 }
 
 @supports (grid-areaz123: auto) {
