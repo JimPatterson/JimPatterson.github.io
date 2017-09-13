@@ -21,10 +21,11 @@
     width: 80%;
 }
 
-@support (grid-area: auto) {
+/* Undo the legacy options */
+@supports (grid-area: auto) {
     #app #header, #app #nav, #app #body, #app #footer {
-        display: inline-block;
-        vertical-align: top;
+        display: block;
+        vertical-align: baseline;
     }
 
     #app #header, #app #footer {
@@ -36,10 +37,14 @@
     }
 
     #app #body {
+        width: auto;
     }
 }
 
-@supports (grid-areaz123: auto) {
+/*
+ * The supported layouts on the supported browsers
+ */
+@supports (grid-area: auto) {
     #app {
         display: grid;
         grid-gap: 1em;
@@ -52,9 +57,11 @@
     }
 
     #app .fullscreen {
+        /* needs a full height grid template here */
     }
 }
 
+/* Page layout details */
 #header {
     grid-area: hdr;
     background-color: aquamarine;
