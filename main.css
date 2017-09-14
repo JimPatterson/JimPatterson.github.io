@@ -45,19 +45,69 @@
  * The supported layouts on the supported browsers
  */
 @supports (grid-area: auto) {
-    #app {
-        display: grid;
-        grid-gap: 1em;
-        grid-template:
-            "hdr hdr" minmax(2em, auto)
-            "nav bdy" 1fr
-            "nav ftr" minmax(2em, auto)
-            / minmax(5em, 1fr) 7fr
-            ;
+
+    /* Narrower devices get a hidden nav and no white border */
+    @media only screen {
+        #app {
+            display: grid;
+            grid-template:
+                "hdr" minmax(2em, auto)
+                "nav" auto
+                "bdy" 1fr
+                "ftr" minmax(2em, auto)
+                / 100% 100%
+                ;
+        }
+
+        #app #nav {
+            display: none;
+        }
+
+        #app .fullscreen {
+            /* needs a full height grid template here */
+        }
+
+        body {
+            margin: 0;
+        }
     }
 
-    #app .fullscreen {
-        /* needs a full height grid template here */
+    /* Wide devices get nav visible by default and white borders */
+    @media only screen and (min-width: 62em) {
+        #app {
+            max-width: 86em;
+            margin: auto;
+            display: grid;
+            grid-gap: 1em;
+            grid-template:
+                "hdr hdr" minmax(2em, auto)
+                "nav bdy" 1fr
+                "nav ftr" minmax(2em, auto)
+                / minmax(5em, 1fr) 7fr
+                ;
+        }
+
+        #app #nav {
+            display: block;
+        }
+
+        #app .fullscreen {
+            /* needs a full height grid template here */
+        }
+
+        body {
+            margin: 8px;
+        }
+    }
+}
+
+
+/*
+ * Screen print options
+ */
+@media print {
+    #app #nav {
+        display: none;
     }
 }
 
