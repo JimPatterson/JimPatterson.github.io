@@ -15,6 +15,12 @@
         <link rel="manifest" href="/manifest.json">
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="theme-color" content="#ffffff">
+
+        <!-- App stuff -->
+        <link rel="stylesheet"
+            href="//cdn.muicss.com/mui-0.9.25/css/mui.min.css">
+        <script src="//cdn.muicss.com/mui-0.9.25/js/mui.min.js"></script>
+        <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
         <link rel="stylesheet" href="main.css">
     </head>
     <body>
@@ -29,10 +35,11 @@
         <div id="unsupported"></div>
 
         <div id="app" class="fullscreenx">
-            <div id="header">
-                Header
-            </div>
-            <div id="nav">
+            <div id="nav" class="mui--no-user-select">
+                <div id="sidedrawer-brand" class="mui--appbar-line-height">
+                    <span class="mui--text-title">logo/name</span>
+                </div>
+                <div class="mui-divider"></div>
                 <ul>
                     <li>Nav1</li>
                     <li>Nav2</li>
@@ -44,13 +51,74 @@
                     <li>Nav8</li>
                     <li>Nav9</li>
                 </ul>
-            </div><!-- Note: No whitespace allowed here
-            --><div id="body">
-                Body
             </div>
-            <div id="footer">
+            <div id="header">
+                <div class="mui-appbar mui--appbar-line-height">
+                    <div class="mui-container-fluid mui--no-user-select">
+                        <a class="nav-toggle js-show-nav mui--visible-xs-inline-block mui--visible-sm-inline-block">
+                            &#9776;
+                        </a>
+                        <a class="nav-toggle js-hide-nav mui--hidden-xs mui--hidden-sm">
+                            &#9776;
+                        </a>
+                        <span>Header</span>
+                    </div>
+                </div>
+            </div>
+            <div id="body">
+                <div class="mui--appbar-height"></div>
+                <div class="mui-container-fluid">
+                    <br>
+                    <p>Body 1</p>
+                    <p>Body 2</p>
+                    <p>Body 3</p>
+                    <p>Body 4</p>
+                    <p>Body 5</p>
+                    <p>Body 6</p>
+                    <p>Body 7</p>
+                    <p>Body 8</p>
+                    <p>Body 9</p>
+                    <p>Body 10</p>
+                    <p>Body 11</p>
+                </div>
+            </div>
+            <div id="footer" class="mui-container-fluid">
                 Footer
             </div>
         </div>
+        <script type="text/javascript">
+            jQuery(function($) {
+                const $bodyEl = $('body'),
+                    $navEl = $('#nav');
+
+
+                function showNav() {
+                  // show overlay
+                  var options = {
+                      onclose: function() {
+                          $navEl
+                              .removeClass('active')
+                              .appendTo(document.body);
+                      }
+                  };
+
+                  var $overlayEl = $(mui.overlay('on', options));
+
+                  // show element
+                  $navEl.appendTo($overlayEl);
+                  setTimeout(function() {
+                      $navEl.addClass('active');
+                  }, 20);
+              }
+
+
+              function hideNav() {
+                $bodyEl.toggleClass('hide-nav');
+              }
+
+              $('.js-show-nav').on('click', showNav);
+              $('.js-hide-nav').on('click', hideNav);
+            });
+        </script>
     </body>
 </html>

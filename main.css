@@ -1,105 +1,84 @@
 /*
- * Legacy support - will be overridden on modern browsers.
- * If you add things here, they must be overridden
- * below.
- */
-
-#app #header, #app #nav, #app #body, #app #footer {
-    display: inline-block;
-    vertical-align: top;
-}
-
-#app #header, #app #footer {
-    width: 100%;
-}
-
-#app #nav {
-    width: 20%;
-}
-
-#app #body {
-    width: 80%;
-}
-
-/* Undo the legacy options */
-@supports (grid-area: auto) {
-    #app #header, #app #nav, #app #body, #app #footer {
-        display: block;
-        vertical-align: baseline;
-    }
-
-    #app #header, #app #footer {
-        width: auto;
-    }
-
-    #app #nav {
-        width: auto;
-    }
-
-    #app #body {
-        width: auto;
-    }
-}
-
-/*
  * The supported layouts on the supported browsers
  */
-@supports (grid-area: auto) {
+    #header {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 2;
+        transition: left 0.2s;
+    }
 
-    /* Narrower devices get a hidden nav and no white border */
-    @media only screen {
-        #app {
-            display: grid;
-            grid-template:
-                "hdr" minmax(2em, auto)
-                "nav" auto
-                "bdy" 1fr
-                "ftr" minmax(2em, auto)
-                / 100% 100%
-                ;
+    #nav {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 200px;
+        left: -200px;
+        overflow: auto;
+        z-index: 2;
+        background-color: #fff;
+        transition: transform 0.2s;
+    }
+
+    #body {
+        min-height: 100%;
+        overflow-x: hidden;
+        margin-left: 0px;
+        transition: margin-left 0.2s;
+
+        /* sticky bottom */
+        margin-bottom: -160px;
+        padding-bottom: 160px;
+    }
+
+    #footer {
+        height: 160px;
+        margin-left: 0px;
+        transition: margin-left 0.2s;
+    }
+
+    @media (min-width: 768px) {
+        #header {
+            left: 200px;
         }
 
-        #app #nav {
-            display: none;
+        #nav {
+            transform: translate(200px);
         }
 
-        #app .fullscreen {
-            /* needs a full height grid template here */
+        #body {
+            margin-left: 200px;
         }
 
-        body {
-            margin: 0;
+        #footer {
+            margin-left: 200px;
+        }
+
+        body.hide-nav #header {
+            left: 0;
+        }
+
+        body.hide-nav #nav {
+            transform: translate(0px);
+        }
+
+        body.hide-nav #body {
+            margin-left: 0;
+        }
+
+        body.hide-nav #footer {
+            margin-left: 0;
         }
     }
 
-    /* Wide devices get nav visible by default and white borders */
-    @media only screen and (min-width: 62em) {
-        #app {
-            max-width: 86em;
-            margin: auto;
-            display: grid;
-            grid-gap: 1em;
-            grid-template:
-                "hdr hdr" minmax(2em, auto)
-                "nav bdy" 1fr
-                "nav ftr" minmax(2em, auto)
-                / minmax(5em, 1fr) 7fr
-                ;
-        }
-
-        #app #nav {
-            display: block;
-        }
-
-        #app .fullscreen {
-            /* needs a full height grid template here */
-        }
-
-        body {
-            margin: 8px;
-        }
+    /**
+     * Toggle Side drawer
+     */
+    #nav.active {
+        transform: translate(200px);
     }
-}
 
 
 /*
@@ -112,22 +91,37 @@
 }
 
 /* Page layout details */
+html,
+body {
+    height: 100%;
+}
+
 #header {
-    grid-area: hdr;
     background-color: aquamarine;
 }
 
 #nav {
-    grid-area: nav;
     background-color: wheat;
 }
 
 #body {
-    grid-area: bdy;
     background-color: powderblue;
 }
 
 #footer {
-    grid-area: ftr;
     background-color: yellow;
+}
+
+/* Element details */
+.nav-toggle {
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+    line-height: 20px;
+    margin-right: 10px;
+}
+
+.nav-toggle:hover {
+    color: #fff;
+    text-decoration: none;
 }
