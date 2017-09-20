@@ -1,44 +1,90 @@
 /*
+ * The basic layout for all browsers
+ */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+
+#header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 200px;
+    z-index: 2;
+}
+
+#nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    overflow: auto;
+    z-index: 2;
+}
+
+/* advanced browsers will turn this back on */
+a.nav-toggle {
+    display: none;
+}
+
+#body {
+    min-height: 100%;
+    /*
+    overflow-x: hidden;
+    */
+    margin-left: 200px;
+
+    /* reserve space for the sticky footer */
+    margin-bottom: -6ex;
+    padding-bottom: 6ex;
+}
+
+#footer {
+    height: 6ex;
+    margin-left: 200px;
+}
+
+/*
  * The supported layouts on the supported browsers
  */
+@supports (grid-area: auto) {
+    /*
+     * Modern but small devices get a hidden overlay nav with a show button
+     */
     #header {
-        position: fixed;
-        top: 0;
-        right: 0;
         left: 0;
-        z-index: 2;
         transition: left 0.2s;
     }
 
     #nav {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        width: 200px;
         left: -200px;
-        overflow: auto;
-        z-index: 2;
-        background-color: #fff;
         transition: transform 0.2s;
     }
 
+    a.nav-toggle {
+        display: inline;
+    }
+
     #body {
-        min-height: 100%;
-        overflow-x: hidden;
         margin-left: 0px;
         transition: margin-left 0.2s;
-
-        /* sticky bottom */
-        margin-bottom: -160px;
-        padding-bottom: 160px;
     }
 
     #footer {
-        height: 160px;
         margin-left: 0px;
         transition: margin-left 0.2s;
     }
 
+    /*
+     * larger devices get a visible but hide-able side nav
+     */
     @media (min-width: 768px) {
         #header {
             left: 200px;
@@ -73,28 +119,71 @@
         }
     }
 
-    /**
-     * Toggle Side drawer
-     */
+    /* Toggle nav drawer */
     #nav.active {
         transform: translate(200px);
     }
+
+    .nav-toggle {
+        cursor: pointer;
+        color: #fff;
+        font-size: 20px;
+        line-height: 20px;
+        margin-right: 10px;
+    }
+
+    .nav-toggle:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    /* nav elements */
+    #nav-brand {
+      padding-left: 20px;
+    }
+
+    #nav ul {
+      list-style: none;
+    }
+
+    #nav > ul {
+      padding-left: 0px;
+    }
+
+    #nav > ul > li:first-child {
+      padding-top: 15px;
+    }
+
+    #nav strong {
+      display: block;
+      padding: 15px 22px;
+      cursor: pointer;
+    }
+
+    #nav strong:hover {
+      background-color: #E0E0E0;
+    }
+
+    #nav strong + ul > li {
+      padding: 6px 0px;
+    }
+
+
+}
 
 
 /*
  * Screen print options
  */
 @media print {
-    #app #nav {
+    #nav {
         display: none;
     }
 }
 
-/* Page layout details */
-html,
-body {
-    height: 100%;
-}
+/*
+ * Element details
+ */
 
 #header {
     background-color: aquamarine;
@@ -112,16 +201,3 @@ body {
     background-color: yellow;
 }
 
-/* Element details */
-.nav-toggle {
-    cursor: pointer;
-    color: #fff;
-    font-size: 20px;
-    line-height: 20px;
-    margin-right: 10px;
-}
-
-.nav-toggle:hover {
-    color: #fff;
-    text-decoration: none;
-}

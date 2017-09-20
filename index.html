@@ -34,91 +34,124 @@
 
         <div id="unsupported"></div>
 
-        <div id="app" class="fullscreenx">
-            <div id="nav" class="mui--no-user-select">
-                <div id="sidedrawer-brand" class="mui--appbar-line-height">
-                    <span class="mui--text-title">logo/name</span>
-                </div>
-                <div class="mui-divider"></div>
-                <ul>
-                    <li>Nav1</li>
-                    <li>Nav2</li>
-                    <li>Nav3</li>
-                    <li>Nav4</li>
-                    <li>Nav5</li>
-                    <li>Nav6</li>
-                    <li>Nav7</li>
-                    <li>Nav8</li>
-                    <li>Nav9</li>
-                </ul>
+        <div id="nav" class="mui--no-user-select">
+            <div id="nav-brand" class="mui--appbar-line-height">
+                <span class="mui--text-title">logo/name</span>
             </div>
-            <div id="header">
-                <div class="mui-appbar mui--appbar-line-height">
-                    <div class="mui-container-fluid mui--no-user-select">
-                        <a class="nav-toggle js-show-nav mui--visible-xs-inline-block mui--visible-sm-inline-block">
-                            &#9776;
-                        </a>
-                        <a class="nav-toggle js-hide-nav mui--hidden-xs mui--hidden-sm">
-                            &#9776;
-                        </a>
-                        <span>Header</span>
-                    </div>
-                </div>
-            </div>
-            <div id="body">
-                <div class="mui--appbar-height"></div>
-                <div class="mui-container-fluid">
-                    <br>
-                    <p>Body 1</p>
-                    <p>Body 2</p>
-                    <p>Body 3</p>
-                    <p>Body 4</p>
-                    <p>Body 5</p>
-                    <p>Body 6</p>
-                    <p>Body 7</p>
-                    <p>Body 8</p>
-                    <p>Body 9</p>
-                    <p>Body 10</p>
-                    <p>Body 11</p>
+            <div class="mui-divider"></div>
+            <ul>
+                <li>
+                    <strong>Header 1</strong>
+                    <ul style="display: none;">
+                        <li>Nav1</li>
+                        <li>Nav2</li>
+                        <li>Nav3</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Header 2</strong>
+                    <ul style="display: none;">
+                        <li>Nav4</li>
+                        <li>Nav5</li>
+                        <li>Nav6</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Header 3</strong>
+                    <ul style="display: none;">
+                        <li>Nav7</li>
+                        <li>Nav8</li>
+                        <li>Nav9</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div id="header">
+            <div class="mui-appbar mui--appbar-line-height">
+                <div class="mui-container-fluid mui--no-user-select">
+                    <a class="nav-toggle js-show-nav mui--visible-xs-inline-block mui--visible-sm-inline-block">
+                        &#9776;
+                    </a>
+                    <a class="nav-toggle js-hide-nav mui--hidden-xs mui--hidden-sm">
+                        &#9776;
+                    </a>
+                    <span>Header</span>
                 </div>
             </div>
-            <div id="footer" class="mui-container-fluid">
+        </div>
+
+        <div id="body">
+            <div class="mui--appbar-height"></div>
+            <div class="mui-container-fluid">
+                <br>
+                <p>Body 1</p>
+                <p>Body 2</p>
+                <p>Body 3</p>
+                <p>Body 4</p>
+                <p>Body 5</p>
+                <p>Body 6</p>
+                <p>Body 7</p>
+                <p>Body 8</p>
+                <p>Body 9</p>
+                <p>Body 10</p>
+                <p>Body 11</p>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="mui-container-fluid">
                 Footer
             </div>
         </div>
+
         <script type="text/javascript">
             jQuery(function($) {
+
+                // Nav drawer hiding/showing
+
                 const $bodyEl = $('body'),
                     $navEl = $('#nav');
 
 
                 function showNav() {
-                  // show overlay
-                  var options = {
-                      onclose: function() {
-                          $navEl
-                              .removeClass('active')
-                              .appendTo(document.body);
-                      }
-                  };
+                    // show overlay
+                    var options = {
+                        onclose: function() {
+                            $navEl
+                                .removeClass('active')
+                                .appendTo(document.body);
+                        }
+                    };
 
-                  var $overlayEl = $(mui.overlay('on', options));
+                    var $overlayEl = $(mui.overlay('on', options));
 
-                  // show element
-                  $navEl.appendTo($overlayEl);
-                  setTimeout(function() {
-                      $navEl.addClass('active');
-                  }, 20);
-              }
+                    // show element
+                    $navEl.appendTo($overlayEl);
+                    setTimeout(function() {
+                        $navEl.addClass('active');
+                    }, 20);
+                }
 
 
-              function hideNav() {
-                $bodyEl.toggleClass('hide-nav');
-              }
+                function hideNav() {
+                    $bodyEl.toggleClass('hide-nav');
+                }
 
-              $('.js-show-nav').on('click', showNav);
-              $('.js-hide-nav').on('click', hideNav);
+
+                $('.js-show-nav').on('click', showNav);
+                $('.js-hide-nav').on('click', hideNav);
+
+
+                // menu element hiding/showing
+
+                const $titleEls = $('strong', $navEl);
+
+                $titleEls.on('click', function() {
+                    $titleEls.next(':visible').slideToggle(200);
+                    $(this).next().slideToggle(200);
+                });
             });
+
         </script>
     </body>
 </html>
