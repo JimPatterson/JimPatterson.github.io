@@ -168,13 +168,12 @@ a.nav-toggle {
 
     #nav ul {
       list-style: none;
+      margin-bottom: 0;
+      padding-left: 2em;
     }
 
     #nav > ul {
       padding-left: 0px;
-    }
-
-    #nav > ul > li:first-child {
       padding-top: 15px;
     }
 
@@ -184,12 +183,29 @@ a.nav-toggle {
       cursor: pointer;
     }
 
+    #nav em {
+      display: block;
+      padding: 10px 17px;
+      cursor: pointer;
+      font-style: normal;
+      font-weight: 700;
+    }
+
     #nav strong:hover {
       background-color: #E0E0E0;
     }
 
+    #nav em:hover {
+      background-color: #D0D0D0;
+    }
+
     #nav strong + ul > li {
-      padding: 6px 0px;
+      padding: 0;
+    }
+
+    #nav a {
+        color: black;
+        text-decoration: underline;
     }
 }
 
