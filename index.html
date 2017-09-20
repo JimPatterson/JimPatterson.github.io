@@ -35,7 +35,7 @@
         <div id="unsupported"></div>
 
         <div id="nav" class="mui--no-user-select">
-            <div id="nav-brand" class="mui--appbar-line-height">
+            <div id="nav-brand">
                 <span class="mui--text-title">logo/name</span>
             </div>
             <div class="mui-divider"></div>
@@ -70,13 +70,16 @@
         <div id="header">
             <div class="mui-appbar mui--appbar-line-height">
                 <div class="mui-container-fluid mui--no-user-select">
-                    <a class="nav-toggle js-show-nav mui--visible-xs-inline-block mui--visible-sm-inline-block">
-                        &#9776;
-                    </a>
-                    <a class="nav-toggle js-hide-nav mui--hidden-xs mui--hidden-sm">
-                        &#9776;
-                    </a>
-                    <span>Header</span>
+                    <div class="header-left">
+                        <a class="nav-toggle js-show-nav mui--visible-xs-inline-block mui--visible-sm-inline-block">
+                            &#9776;
+                        </a>
+                        <a class="nav-toggle js-hide-nav mui--hidden-xs mui--hidden-sm">
+                            &#9776;
+                        </a>
+                        page title
+                    </div>
+                    <div class="header-right">alert message</div>
                 </div>
             </div>
         </div>
@@ -99,8 +102,15 @@
             </div>
         </div>
         <div id="footer">
-            <div class="mui-container-fluid">
-                Footer
+            <div class="mui-container-fluid header-left">
+                System
+                <br>
+                Requirements
+            </div>
+            <div class="mui-container-fluid header-right">
+                &copy; 2008-2017 Datatrac Corporation,
+                <br>
+                All rights reserved.
             </div>
         </div>
 

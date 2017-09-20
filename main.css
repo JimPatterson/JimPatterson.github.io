@@ -9,6 +9,7 @@
 html,
 body {
     height: 100%;
+    min-width: 30em;
 }
 
 
@@ -18,6 +19,18 @@ body {
     right: 0;
     left: 200px;
     z-index: 2;
+}
+
+.header-left {
+    width: fit-content;
+    float: left;
+    vertical-align: middle;
+}
+
+.header-right {
+    width: fit-content;
+    float: right;
+    vertical-align: middle;
 }
 
 #nav {
@@ -48,7 +61,18 @@ a.nav-toggle {
 
 #footer {
     height: 6ex;
+    line-height: 3ex;
     margin-left: 200px;
+}
+
+@media (min-width: 35em) {
+    #footer {
+        line-height: 6ex;
+    }
+
+    #footer br {
+        display: none;
+    }
 }
 
 /*
@@ -167,8 +191,6 @@ a.nav-toggle {
     #nav strong + ul > li {
       padding: 6px 0px;
     }
-
-
 }
 
 
