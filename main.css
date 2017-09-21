@@ -49,9 +49,6 @@ a.nav-toggle {
 
 #body {
     min-height: 100%;
-    /*
-    overflow-x: hidden;
-    */
     margin-left: 200px;
 
     /* reserve space for the sticky footer */
@@ -64,16 +61,18 @@ a.nav-toggle {
     padding: 2ex 1em 2ex 1em;
     background-color: WhiteSmoke;
     border-radius: 0;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16)
-        0 0 2px 0 rgba(0, 0, 0, .12);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.16),
+        0 0 2px 0 rgba(0,0,0,.12);
 }
 
 #footer {
     height: 6ex;
     line-height: 3ex;
     margin-left: 200px;
+    text-align: center;
 }
 
+/* wrap the footer lines on small displays */
 @media (min-width: 35em) {
     #footer {
         line-height: 6ex;
