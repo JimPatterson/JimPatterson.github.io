@@ -34,11 +34,11 @@
 
         <div id="unsupported"></div>
 
-        <div id="nav" class="mui--no-user-select">
+        <div id="nav" class="no-user-select">
             <div id="nav-brand">
-                <span class="mui--text-title">logo/name</span>
+                <span class="text-title">logo/name</span>
             </div>
-            <div class="mui-divider"></div>
+            <div class="divider"></div>
             <ul>
                 <li>
                     <strong class="active">Header 1<span class="arrow"/>v</strong>
@@ -106,26 +106,24 @@
             </ul>
         </div>
 
-        <div id="header">
-            <div class="mui-appbar mui--appbar-line-height">
-                <div class="mui-container-fluid mui--no-user-select">
-                    <div class="header-left">
-                        <a class="nav-toggle js-show-nav mui--visible-xs-inline-block mui--visible-sm-inline-block">
-                            &#9776;
-                        </a>
-                        <a class="nav-toggle js-hide-nav mui--hidden-xs mui--hidden-sm">
-                            &#9776;
-                        </a>
-                        page title
-                    </div>
-                    <div class="header-right">optional alert message</div>
+        <div id="header" class="no-user-select">
+            <div class="fluid-box">
+                <div class="header-left">
+                    <a id="toggle-small" class="nav-toggle js-show-nav">
+                        &#9776;
+                    </a>
+                    <a id="toggle-big" class="nav-toggle js-hide-nav">
+                        &#9776;
+                    </a>
+                    page title
                 </div>
+                <div class="header-right">optional alert message</div>
             </div>
         </div>
 
         <div id="body">
-            <div class="mui--appbar-height"></div>
-            <div class="mui-container-fluid">
+            <div class="header-spacer"></div>
+            <div class="fluid-box">
                 <div class="panel">
                     <p>Body 1</p>
                     <p>Body 2</p>
@@ -159,13 +157,13 @@
                 </div>
             </div>
         </div>
-        <div id="footer">
-            <div class="mui-container-fluid header-left">
+        <div id="footer" class="fluid-box">
+            <div class="header-left">
                 System
                 <br>
                 Requirements
             </div>
-            <div class="mui-container-fluid header-right">
+            <div class="header-right">
                 &copy; 2008-2017 Datatrac Corporation,
                 <br>
                 All rights reserved.

@@ -3,11 +3,12 @@
  */
 
 * {
-    box-sizing: border-box;
+    box-sizing: inherit;
 }
 
 html,
 body {
+    box-sizing: border-box;
     height: 100%;
     min-width: 30em;
 }
@@ -19,6 +20,12 @@ body {
     right: 0;
     left: 200px;
     z-index: 2;
+    height: 64px;
+    line-height: 64px;
+}
+
+.header-spacer {
+    height: 64px;
 }
 
 .header-left {
@@ -56,13 +63,9 @@ a.nav-toggle {
     padding-bottom: 6ex;
 }
 
-#body .panel {
-    margin: 2ex 0.5em 2ex 0.5em;
-    padding: 2ex 1em 2ex 1em;
-    background-color: WhiteSmoke;
-    border-radius: 0;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.16),
-        0 0 2px 0 rgba(0,0,0,.12);
+/* the old dtrweb code assumed the default sizing */
+#body .panel > * {
+    box-sizing: content-box;
 }
 
 #footer {
@@ -72,7 +75,7 @@ a.nav-toggle {
     text-align: center;
 }
 
-/* wrap the footer lines on small displays */
+/* unwrap the footer lines on large displays */
 @media (min-width: 35em) {
     #footer {
         line-height: 6ex;
@@ -80,6 +83,35 @@ a.nav-toggle {
 
     #footer br {
         display: none;
+    }
+}
+
+/*
+ * panel for hold primary content
+ */
+#body .panel {
+    background-color: WhiteSmoke;
+    padding: 2ex 1em 2ex 1em;
+}
+
+#body > .fluid-box {
+    padding: 0;
+}
+
+/*
+ * larger devices have the panel offset
+ */
+@media (min-width: 768px) {
+    #body > .fluid-box {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #body .panel {
+        margin: 2ex 0.5em 2ex 0.5em;
+        border-radius: 0;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16),
+            0 0 2px 0 rgba(0, 0, 0, .12);
     }
 }
 
@@ -100,8 +132,17 @@ a.nav-toggle {
         transition: transform 0.2s;
     }
 
-    a.nav-toggle {
+    /* Turn on the correct nav toggle */
+    #toggle-small {
         display: inline;
+    }
+    @media (min-width: 768px) {
+        #toggle-big {
+            display: inline;
+        }
+        #toggle-small {
+            display: none;
+        }
     }
 
     #body {
@@ -236,7 +277,8 @@ a.nav-toggle {
  */
 
 #header {
-    background-color: aquamarine;
+    background-color: #2196f3;
+    color: #fff;
 }
 
 #nav {
@@ -251,3 +293,42 @@ a.nav-toggle {
     background-color: #e8e8e8;
 }
 
+/* Make less useful items not selectable to improve copy/paste */
+.no-user-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* some standard text styles */
+.text-title {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+/* a themeable divider */
+.divider {
+    display: block;
+    height: 1px;
+    background-color: rgba(0, 0, 0, .12);
+}
+
+/* a fluid box */
+.fluid-box {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* micro clearfix */
+.fluid-box:before, .fluid-box:after {
+    content: " ";
+    display: table;
+}
+
+.fluid-box:after {
+    clear: both;
+}
