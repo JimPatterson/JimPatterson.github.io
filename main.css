@@ -59,6 +59,15 @@ a.nav-toggle {
     padding-bottom: 6ex;
 }
 
+#body .panel {
+    margin: 2ex 0.5em 2ex 0.5em;
+    padding: 2ex 1em 2ex 1em;
+    background-color: WhiteSmoke;
+    border-radius: 0;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16)
+        0 0 2px 0 rgba(0, 0, 0, .12);
+}
+
 #footer {
     height: 6ex;
     line-height: 3ex;
@@ -183,6 +192,10 @@ a.nav-toggle {
       cursor: pointer;
     }
 
+    #nav .active .arrow {
+        float: right;
+    }
+
     #nav em {
       display: block;
       padding: 10px 17px;
@@ -228,14 +241,14 @@ a.nav-toggle {
 }
 
 #nav {
-    background-color: wheat;
+    background-color: white;
 }
 
 #body {
-    background-color: powderblue;
+    background-color: gainsboro;
 }
 
 #footer {
-    background-color: yellow;
+    background-color: #e8e8e8;
 }
 
