@@ -1,7 +1,6 @@
 /*
- * The basic layout for all browsers
+ * some simplistic layout options
  */
-
 * {
     box-sizing: inherit;
 }
@@ -13,6 +12,10 @@ body {
     min-width: 30em;
 }
 
+
+/*
+ * The basic layout for all browsers
+ */
 
 #header {
     position: fixed;
@@ -76,6 +79,32 @@ a.nav-toggle {
     text-align: center;
 }
 
+/* we need a relative box to position the powered div */
+#nav-cont {
+    min-height: 100%;
+    position: relative;
+}
+
+#menu {
+    /* reserve space for the sticky powered by */
+    /* NOTE: Must match powered height */
+    margin-bottom: -70px;
+    padding-bottom: 70px;
+}
+
+#powered {
+    position: absolute;
+    bottom: 0;
+    height: 70px;      /* must match reserved space in menu */
+    line-height: 14px;
+    font-size: 14px;
+    text-align: center;
+}
+
+#powered .divider {
+    margin-bottom: 6px;
+}
+
 /* unwrap the footer lines on large displays */
 @media (min-width: 35em) {
     #footer {
@@ -91,7 +120,6 @@ a.nav-toggle {
  * panel for hold primary content
  */
 #body .panel {
-    background-color: WhiteSmoke;
     padding: 2ex 1em 2ex 1em;
 }
 
@@ -111,17 +139,15 @@ a.nav-toggle {
     #body .panel {
         margin: 2ex 0.5em 2ex 0.5em;
         border-radius: 0;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16),
-            0 0 2px 0 rgba(0, 0, 0, .12);
     }
 }
 
 /*
- * The supported layouts on the supported browsers
+ * The advanced layouts on the supported browsers
  */
 @supports (grid-area: auto) {
     /*
-     * Modern but small devices get a hidden overlay nav with a show button
+     * Small devices get a hidden overlay nav with a show button
      */
     #header {
         left: 0;
@@ -200,66 +226,13 @@ a.nav-toggle {
 
     .nav-toggle {
         cursor: pointer;
-        color: #fff;
         font-size: 20px;
         line-height: 20px;
         margin-right: 10px;
     }
 
     .nav-toggle:hover {
-        color: #fff;
         text-decoration: none;
-    }
-
-    /* nav elements */
-    #nav-brand {
-      padding-left: 20px;
-    }
-
-    #nav ul {
-      list-style: none;
-      margin-bottom: 0;
-      padding-left: 2em;
-    }
-
-    #nav > ul {
-      padding-left: 0px;
-      padding-top: 15px;
-    }
-
-    #nav strong {
-      display: block;
-      padding: 15px 22px;
-      cursor: pointer;
-    }
-
-    #nav .active .arrow {
-        float: right;
-    }
-
-    #nav em {
-      display: block;
-      padding: 10px 17px;
-      cursor: pointer;
-      font-style: normal;
-      font-weight: 700;
-    }
-
-    #nav strong:hover {
-      background-color: #E0E0E0;
-    }
-
-    #nav em:hover {
-      background-color: #D0D0D0;
-    }
-
-    #nav strong + ul > li {
-      padding: 0;
-    }
-
-    #nav a {
-        color: black;
-        text-decoration: underline;
     }
 }
 
@@ -268,30 +241,9 @@ a.nav-toggle {
  * Screen print options
  */
 @media print {
-    #nav {
+    #nav, #powered {
         display: none;
     }
-}
-
-/*
- * Element details
- */
-
-#header {
-    background-color: #2196f3;
-    color: #fff;
-}
-
-#nav {
-    background-color: white;
-}
-
-#body {
-    background-color: gainsboro;
-}
-
-#footer {
-    background-color: #e8e8e8;
 }
 
 /* Make less useful items not selectable to improve copy/paste */
@@ -313,7 +265,6 @@ a.nav-toggle {
 .divider {
     display: block;
     height: 1px;
-    background-color: rgba(0, 0, 0, .12);
 }
 
 /* a fluid box */
@@ -334,6 +285,7 @@ a.nav-toggle {
     clear: both;
 }
 
+/* user icon is css circle in the corner */
 #user {
     margin-left: 1em;
     margin-top: 12px;
@@ -343,30 +295,107 @@ a.nav-toggle {
     line-height: 40px;
     text-align: center;
     vertical-align: middle;
-    background: green;
 }
 
-#nav-cont {
-    min-height: 100%;
-    position: relative;
-}
-
-#menu {
-    /* reserve space for the sticky powered by */
-    /* NOTE: Must match powered height */
-    margin-bottom: -70px;
-    padding-bottom: 70px;
-}
-
-#powered {
-    position: absolute;
-    bottom: 0;
-    height: 70px;      /* must match reserved space in menu */
-    line-height: 14px;
-    font-size: 14px;
+/*
+ * nav elements
+ */
+#nav-brand {
+    padding: 10px 10px 5px 10px;
     text-align: center;
 }
 
-#powered .divider {
-    margin-bottom: 6px;
+#nav-brand img {
+    max-width: 128px;
+    height: auto;
+}
+
+/* drop the default list styling */
+#nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* lvl1 nav styles */
+#nav strong {
+    display: block;
+    padding: 15px 11px 0;
+    cursor: pointer;
+}
+
+/* lvl2 nav styles */
+#nav em {
+    display: block;
+    padding: 10px 22px 0;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 700;
+}
+
+/* lvl3 nav styles */
+#menu li li li {
+    padding: 5px 30px 0;
+}
+
+#menu a {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+/*
+ * themeable element details
+ */
+
+#header {
+    background-color: #2196f3;
+    color: #fff;
+}
+
+#user {
+    background: green;
+}
+
+#nav {
+    background-color: white;
+}
+
+#nav strong:hover {
+    background-color: #E0E0E0;
+}
+
+#nav em:hover {
+    background-color: #D0D0D0;
+}
+
+.nav-toggle, .nav-toggle:hover {
+    color: #fff;
+}
+
+#body {
+    background-color: gainsboro;
+}
+
+#body .panel {
+    background-color: WhiteSmoke;
+}
+
+@media (min-width: 768px) {
+    #body .panel {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16),
+            0 0 2px 0 rgba(0, 0, 0, .12);
+    }
+}
+
+#footer {
+    background-color: #e8e8e8;
+}
+
+#menu a {
+    color: black;
+}
+
+.divider {
+    background-color: rgba(0, 0, 0, .12);
 }
