@@ -59,6 +59,7 @@ a.nav-toggle {
     margin-left: 200px;
 
     /* reserve space for the sticky footer */
+    /* NOTE: Must match footer height */
     margin-bottom: -6ex;
     padding-bottom: 6ex;
 }
@@ -69,8 +70,8 @@ a.nav-toggle {
 }
 
 #footer {
-    height: 6ex;
-    line-height: 3ex;
+    height: 6ex;        /* must match reserved space in body */
+    line-height: 3ex;   /* 1/2 of height */
     margin-left: 200px;
     text-align: center;
 }
@@ -78,7 +79,7 @@ a.nav-toggle {
 /* unwrap the footer lines on large displays */
 @media (min-width: 35em) {
     #footer {
-        line-height: 6ex;
+        line-height: 6ex;  /* must match footer height */
     }
 
     #footer br {
@@ -331,4 +332,41 @@ a.nav-toggle {
 
 .fluid-box:after {
     clear: both;
+}
+
+#user {
+    margin-left: 1em;
+    margin-top: 12px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    background: green;
+}
+
+#nav-cont {
+    min-height: 100%;
+    position: relative;
+}
+
+#menu {
+    /* reserve space for the sticky powered by */
+    /* NOTE: Must match powered height */
+    margin-bottom: -70px;
+    padding-bottom: 70px;
+}
+
+#powered {
+    position: absolute;
+    bottom: 0;
+    height: 70px;      /* must match reserved space in menu */
+    line-height: 14px;
+    font-size: 14px;
+    text-align: center;
+}
+
+#powered .divider {
+    margin-bottom: 6px;
 }
